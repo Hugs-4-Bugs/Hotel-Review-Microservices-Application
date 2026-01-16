@@ -1,4 +1,4 @@
-package com.prabhat.codes;
+package com.prabhatcodes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
