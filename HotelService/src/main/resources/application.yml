@@ -1,0 +1,36 @@
+server:
+  port: 8182 # Unique port for UserService, change if needed
+
+spring:
+  application:
+    name: user-service # Name of your microservice
+  datasource:
+    url: jdbc:mysql://localhost:3306/HotelService
+    username: root # Your MySQL username
+    password: Prabhat72 # Your MySQL password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jackson:
+      default-property-inclusion: always
+    hikari:
+      pool-name: HikariPool
+      maximum-pool-size: 20
+      minimum-idle: 5
+      idle-timeout: 300000       # 5 min
+      max-lifetime: 1800000      # 30 min
+      connection-timeout: 30000  # 30 sec
+  jpa:
+    hibernate:
+      ddl-auto: update # 'update' is good for development, consider 'validate' or 'none' for production
+      show-sql: true # Log SQL queries to console
+      format-sql: true # Format logged SQL queries
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect # Use MySQL8Dialect for MySQL 8+, or MySQL57Dialect for older versions
+    open-in-view: false # Recommended for performance in web applications
+  # If you are using Spring Cloud Eureka for service discovery:
+  # eureka:
+  #   client:
+  #     service-url:
+  #       defaultZone: http://localhost:8761/eureka # URL of your Eureka server
+  #   instance:
+  #     hostname: localhost # Or the IP address if your services are on different machines
